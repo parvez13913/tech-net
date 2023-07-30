@@ -21,10 +21,8 @@ import {
 } from '@/redux/features/cart/cartSlices';
 
 export default function Cart() {
-  //! Dummy data
   const { products, total } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
-  //! **
 
   return (
     <Sheet>
