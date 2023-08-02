@@ -12,8 +12,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { IProduct } from '@/types/globalTypes';
 
 export default function Products() {
-  const { data, isLoading } = useGetProductsQuery(undefined);
-  console.log(isLoading);
+  const { data } = useGetProductsQuery(undefined);
 
   const { toast } = useToast();
 
@@ -68,7 +67,7 @@ export default function Products() {
       </div>
       <div className="col-span-9 grid grid-cols-3 gap-10 pb-20">
         {productsData?.map((product: IProduct) => (
-          <ProductCard product={product} />
+          <ProductCard product={product} key={product._id} />
         ))}
       </div>
     </div>
