@@ -12,13 +12,19 @@ import {
 import { HiOutlineSearch } from 'react-icons/hi';
 import Cart from '../components/Cart';
 import logo from '../assets/images/technet-logo.png';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+import { setUser } from '@/redux/features/users/userSlice';
 
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
   const handleLogout = () => {
-    console.log('logOut');
+    signOut(auth).then(() => {
+      dispatch(setUser(null));
+    });
   };
 
   return (
